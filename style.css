@@ -791,8 +791,202 @@ nav .bookmark__icon {
   transform: scale(0.99);
 }
 
-@media (width >= 160rem) {
-  html {
-    font-size: 100%;
+@media only screen and (max-width: 48rem) {
+  /* 768px */
+  body {
+    font-size: 0.875rem; /* 14px */
+    padding: 0.625rem; /* 10px */
+  }
+
+  .navbar {
+    flex-direction: column;
+    padding: 0.625rem; /* 10px */
+  }
+
+  .input-field {
+    width: 100%;
+    margin: 0.625rem 0; /* 10px */
+  }
+
+  .search-results {
+    font-size: 0.75rem; /* 12px */
+  }
+}
+
+/* تنسيق شاشات الديسكتوب */
+@media only screen and (min-width: 48.0625rem) and (max-width: 75rem) {
+  /* 769px - 1200px */
+  body {
+    font-size: 1rem; /* 16px */
+    padding: 1.25rem; /* 20px */
+  }
+
+  .navbar {
+    flex-direction: row;
+    padding: 1.25rem; /* 20px */
+  }
+
+  .input-field {
+    width: 60%;
+  }
+
+  .search-results {
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+/* تنسيق الشاشات الكبيرة */
+/* تنسيق شاشات الموبايل */
+@media only screen and (max-width: 48rem) {
+  /* 768px */
+  body {
+    font-size: 0.875rem; /* 14px */
+    padding: 0.625rem; /* 10px */
+  }
+
+  .navbar {
+    flex-direction: column;
+    padding: 0.625rem; /* 10px */
+  }
+
+  .input-field {
+    width: 100%;
+    margin: 0.625rem 0; /* 10px */
+  }
+
+  .search-results {
+    font-size: 0.75rem; /* 12px */
+  }
+}
+
+/* تنسيق شاشات الديسكتوب */
+@media only screen and (min-width: 48.0625rem) and (max-width: 75rem) {
+  /* 769px - 1200px */
+  body {
+    font-size: 1rem; /* 16px */
+    padding: 1.25rem; /* 20px */
+  }
+
+  .navbar {
+    flex-direction: row;
+    padding: 1.25rem; /* 20px */
+  }
+
+  .input-field {
+    width: 60%;
+  }
+
+  .search-results {
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+/* تنسيق الشاشات الكبيرة */
+@media only screen and (max-width: 48rem) {
+  /* 768px */
+  body {
+    font-size: 0.875rem; /* 14px */
+    padding: 0.625rem; /* 10px */
+  }
+
+  .navbar {
+    flex-direction: column;
+    padding: 0.625rem; /* 10px */
+  }
+
+  .input-field {
+    width: 100%;
+    margin: 0.625rem 0; /* 10px */
+  }
+
+  .search-results {
+    font-size: 0.75rem; /* 12px */
+  }
+}
+
+/* تنسيق شاشات الديسكتوب */
+@media only screen and (min-width: 48.0625rem) and (max-width: 75rem) {
+  /* 769px - 1200px */
+  body {
+    font-size: 1rem; /* 16px */
+    padding: 1.25rem; /* 20px */
+  }
+
+  .navbar {
+    flex-direction: row;
+    padding: 1.25rem; /* 20px */
+  }
+
+  .input-field {
+    width: 60%;
+  }
+
+  .search-results {
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+/* تنسيق الشاشات الكبيرة */
+@media only screen and (max-width: 48rem) {
+  /* 768px */
+  body {
+    font-size: 0.875rem; /* 14px */
+    padding: 0.625rem; /* 10px */
+  }
+
+  .navbar {
+    flex-direction: column;
+    padding: 0.625rem; /* 10px */
+  }
+
+  .input-field {
+    width: 100%;
+    margin: 0.625rem 0; /* 10px */
+  }
+
+  .search-results {
+    font-size: 0.75rem; /* 12px */
+  }
+}
+
+@media only screen and (min-width: 48.0625rem) and (max-width: 75rem) {
+  /* 769px - 1200px */
+  body {
+    font-size: 1rem; /* 16px */
+    padding: 1.25rem; /* 20px */
+  }
+
+  .navbar {
+    flex-direction: row;
+    padding: 1.25rem; /* 20px */
+  }
+
+  .input-field {
+    width: 60%;
+  }
+
+  .search-results {
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+@media only screen and (min-width: 75.0625rem) {
+  /* 1201px */
+  body {
+    font-size: 1.125rem; /* 18px */
+    padding: 1.875rem; /* 30px */
+  }
+
+  .navbar {
+    flex-direction: row;
+    padding: 1.875rem; /* 30px */
+  }
+
+  .input-field {
+    width: 50%;
+  }
+
+  .search-results {
+    font-size: 1rem; /* 16px */
   }
 }
