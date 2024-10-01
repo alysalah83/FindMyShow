@@ -881,29 +881,6 @@ nav .bookmark__icon {
   }
 }
 
-/* تنسيق الشاشات الكبيرة */
-@media only screen and (max-width: 48rem) {
-  /* 768px */
-  body {
-    font-size: 0.875rem; /* 14px */
-    padding: 0.625rem; /* 10px */
-  }
-
-  .navbar {
-    flex-direction: column;
-    padding: 0.625rem; /* 10px */
-  }
-
-  .input-field {
-    width: 100%;
-    margin: 0.625rem 0; /* 10px */
-  }
-
-  .search-results {
-    font-size: 0.75rem; /* 12px */
-  }
-}
-
 @media (max-width: 2000px) and (min-width: 1600px) {
   html {
     font-size: 76%;
