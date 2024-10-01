@@ -27,7 +27,6 @@ class Bookmark {
       function (e) {
         const btn = e.target.closest('.btn__bookmark');
         if (!btn) return;
-        console.log('clicked');
         this.#setFields();
         this.#bookmarkIcon.classList.toggle('active');
         handler(this.#data);
@@ -51,7 +50,6 @@ class Bookmark {
   }
 
   #markup(res) {
-    console.log(res);
     if (!res.bookmarked)
       return `
     <div class="text">

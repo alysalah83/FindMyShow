@@ -18,7 +18,6 @@ export const getData = async function (id, type) {
   const data1 = await getJson(
     `https://api.themoviedb.org/3/${type}/${id}?api_key=e9205f098fab4bfd79d0bf1abbfb3a54&append_to_response=videos,images`
   );
-  console.log(data1);
 
   let imdbId = data1.imdb_id;
   if (!imdbId) {
@@ -32,7 +31,6 @@ export const getData = async function (id, type) {
     getJson(`https://imdb.iamidiotareyoutoo.com/search?tt=${imdbId}`),
   ]);
 
-  console.log(data2, data3);
   if (type === 'movie')
     state.movie = {
       image: data1.poster_path || data1.backdrop_path,
@@ -107,7 +105,6 @@ export const getData = async function (id, type) {
     };
   if (state.bookmarks.some(obj => obj.id === state.tvShow.id))
     state.tvShow.bookmarked = true;
-  console.log(state.tvShow, state.movie);
 };
 
 export const addBookmark = function (data) {
