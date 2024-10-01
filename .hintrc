@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "axe/name-role-value": "off",
+    "button-type": "off",
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "scrollbar-width",
+          "scrollbar-color",
+          "scrollbar-width: thin"
+        ]
+      }
+    ],
+    "axe/parsing": [
+      "default",
+      {
+        "duplicate-id-active": "off"
+      }
+    ]
+  }
+}
