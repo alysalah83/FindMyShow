@@ -1,5 +1,5 @@
 {
-  "name": "m-s-info",
+  "name": "find_my_show",
   "version": "1.0.0",
   "description": "",
   "default": "index.html",
@@ -7,7 +7,7 @@
     "start": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist"
   },
-  "author": "",
+  "author": "Alysalah",
   "license": "ISC",
   "dependencies": {
     "lazysizes": "^5.3.2",
