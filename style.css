@@ -790,3 +790,9 @@ nav .bookmark__icon {
   color: #2b3f9f;
   transform: scale(0.99);
 }
+
+@media (width >= 160rem) {
+  html {
+    font-size: 100%;
+  }
+}
