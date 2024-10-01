@@ -44,4 +44,5 @@ export const languagesWords = {
   mt: 'Maltese',
 };
 
+console.log('hello');
 export const DISPLAY_PER_IMAGE = 10;
