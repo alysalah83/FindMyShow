@@ -5,6 +5,7 @@ export const state = {
   tvShow: {},
   results: [],
   bookmarks: [],
+  popularMoviesResults: [],
 };
 
 export const resultsData = async function (query) {
@@ -134,4 +135,11 @@ export const loadBookmarks = function () {
   const data = JSON.parse(strData);
   if (!data) return;
   state.bookmarks = data;
+};
+
+export const loadPopular = async function () {
+  const data = await getJson(
+    `https://api.themoviedb.org/3/movie/popular?api_key=e9205f098fab4bfd79d0bf1abbfb3a54`
+  );
+  state.popularMoviesResults = data.results;
 };

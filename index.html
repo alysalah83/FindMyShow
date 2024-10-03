@@ -64,7 +64,7 @@
   </head>
   <body>
     <!-- the search -->
-    <div class="form__container">
+    <!-- <div class="form__container">
       <form class="search">
         <div class="search__input__container">
           <input type="text" placeholder="Search" id="search__input" />
@@ -87,7 +87,7 @@
         </div>
         <div class="results scroll hidden">
           <ul class="results__list">
-            <!-- <li class="result">
+            <li class="result">
               <img
                 src="https://image.tmdb.org/t/p/original/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg"
                 alt="venom poster"
@@ -98,11 +98,11 @@
                 <p class="descrption"><span>movie</span><span>2018</span></p>
                 <p class="descrption">English</p>
               </div>
-            </li> -->
+            </li>
           </ul>
         </div>
       </form>
-    </div>
+    </div> -->
 
     <!-- spinner -->
     <!-- <div class="load__spinner--container">
@@ -110,49 +110,101 @@
       <div class="load__spinner"></div>
       <div class="load__spinner"></div>
     </div> -->
-
-    <!-- <nav class="nav">
-      <form class="search">
-        <div class="search__input__container" id="nav__input">
-          <input type="text" placeholder="Search" id="search__input" />
-          <button class="search__btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="search__icon"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-              />
-            </svg>
-          </button>
+    <section class="nav__container">
+      <nav class="nav">
+        <form class="search">
+          <div class="search__input__container" id="nav__input">
+            <button class="search__btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="search__icon"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                  class="icon__path"
+                />
+              </svg>
+            </button>
+            <input
+              type="text"
+              placeholder="Search"
+              id="search__input"
+              class=""
+            />
+          </div>
+          <div class="results hidden nav__results">
+            <ul class="results__list"></ul>
+          </div>
+        </form>
+        <button class="btn add__bookmark nav__btn nav__btn--bookmarks">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="bookmark__icon"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+            />
+          </svg>
+        </button>
+        <div class="bookmarks">
+          <ul class="bookmarks__list">
+            <div class="text">
+              <p>No Bookmarks yet, add a Bookmark!</p>
+            </div>
+          </ul>
         </div>
-        <div class="results hidden">
-          <ul class="results__list"></ul>
-        </div>
-      </form>
-      <button class="btn add__bookmark nav__btn">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="bookmark__icon"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
-          />
-        </svg>
-      </button>
-    </nav> -->
+      </nav>
+    </section>
+    <h1 class="heading__1">Explore Movies & TV shows</h1>
+    <section class="popular__collaction--section">
+      <h2 class="heading__2">Trending movies</h2>
+      <div class="slider__collaction--container">
+        <button class="btn__go right">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="icon__arrow"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m8.25 4.5 7.5 7.5-7.5 7.5"
+            />
+          </svg>
+        </button>
+        <button class="btn__go left">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="icon__arrow"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5 8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+      </div>
+    </section>
 
     <!-- movie page  -->
     <!-- <main class="main__container">

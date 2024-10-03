@@ -3,6 +3,7 @@ import bookmarkView from './view/bookmarkView.js';
 import movieView from './view/movieView.js';
 import navView from './view/navView.js';
 import searchResultsView from './view/searchResultsView.js';
+import mainPageView from './view/mainPageView.js';
 
 const controllSearchResults = async function (query) {
   // getting result data for the typing query
@@ -61,12 +62,21 @@ const controllBookmarks = function (data) {
   bookmarkView.render(model.state.bookmarks);
 };
 
+const controllLoadPopular = async function () {
+  //geting popular results
+  await model.loadPopular();
+
+  //render results
+  mainPageView.render(model.state.popularMoviesResults);
+};
+
 const init = function () {
   searchResultsView.addHandlerSearchSubmit(controllLoadData);
   searchResultsView.addHandlerSearching(controllSearchResults);
   movieView.addHandlerOpenCollaction(controllLoadData);
   bookmarkView.addHandlerBookmark(controllBookmarks);
   model.loadBookmarks();
+  controllLoadPopular();
 };
 
 init();
