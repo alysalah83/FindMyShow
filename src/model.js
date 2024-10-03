@@ -6,6 +6,8 @@ export const state = {
   results: [],
   bookmarks: [],
   popularMoviesResults: [],
+  TopRatedMovies: [],
+  TopRatedSeries: [],
 };
 
 export const resultsData = async function (query) {
@@ -138,8 +140,46 @@ export const loadBookmarks = function () {
 };
 
 export const loadPopular = async function () {
-  const data = await getJson(
-    `https://api.themoviedb.org/3/movie/popular?api_key=e9205f098fab4bfd79d0bf1abbfb3a54`
-  );
-  state.popularMoviesResults = data.results;
+  const [
+    popularMovies1,
+    popularMovies2,
+    TopRatedMovies1,
+    TopRatedMovies2,
+    TopRatedSeries1,
+    TopRatedSeries2,
+  ] = await Promise.all([
+    getJson(
+      `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=e9205f098fab4bfd79d0bf1abbfb3a54`
+    ),
+    getJson(
+      `https://api.themoviedb.org/3/movie/popular?language=en-US&page=2&api_key=e9205f098fab4bfd79d0bf1abbfb3a54`
+    ),
+    getJson(
+      `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=e9205f098fab4bfd79d0bf1abbfb3a54`
+    ),
+    getJson(
+      `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=2&api_key=e9205f098fab4bfd79d0bf1abbfb3a54`
+    ),
+    getJson(
+      `https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1&api_key=e9205f098fab4bfd79d0bf1abbfb3a54`
+    ),
+    getJson(
+      `https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=2&api_key=e9205f098fab4bfd79d0bf1abbfb3a54`
+    ),
+  ]);
+
+  state.popularMoviesResults = [
+    ...popularMovies1.results,
+    ...popularMovies2.results,
+  ];
+
+  state.TopRatedMovies = [
+    ...TopRatedMovies1.results,
+    ...TopRatedMovies2.results,
+  ];
+
+  state.TopRatedSeries = [
+    ...TopRatedSeries1.results,
+    ...TopRatedSeries2.results,
+  ];
 };

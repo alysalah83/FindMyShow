@@ -8,22 +8,36 @@ import {
 
 class MainView {
   #data;
-  #parentEle = document.querySelector('.slider__collaction--container');
-  #searchInput = document.getElementById('search__input');
+  #parentEle;
+  #sliderParent;
+  #resultsEle;
+  #btnRight;
+  #btnleft;
+  #type;
+
+  #body = document.body;
   #resultsList = document.querySelector('.results__list');
   #panal = document.querySelector('.nav__results');
   #icon = document.querySelector('.icon__path');
-  #body = document.body;
+  #searchInput = document.getElementById('search__input');
 
   constructor() {
     this.#addHandlerOpenSearch();
+    this.#addHandlerSlide();
   }
 
-  render(data) {
+  render(data, parent, type) {
+    this.#parentEle = document.querySelector(`.${parent}`);
+    this.#sliderParent = this.#parentEle.querySelector(
+      '.slider__collaction--container'
+    );
     this.#data = data;
-    console.log(this.#data);
+    this.#type = type;
     const markup = this.#generateMarkup();
-    this.#parentEle.insertAdjacentHTML('afterbegin', markup);
+    this.#sliderParent.insertAdjacentHTML('afterbegin', markup);
+    this.#resultsEle = Array.from(
+      this.#sliderParent.querySelectorAll('.slider__element')
+    );
   }
 
   #addHandlerOpenSearch() {
@@ -50,20 +64,92 @@ class MainView {
     this.#resultsList.innerHTML = '';
   }
 
-  #generateMarkup() {
-    return this.#data
-      .slice(0, 6)
-      .map(obj => this.#markup(obj))
-      .join('');
+  #addHandlerSlide() {
+    this.#body.addEventListener(
+      'click',
+      function (e) {
+        const btn = e.target.closest('.btn__go');
+        if (!btn) return;
+
+        this.#parentEle = btn.closest('.slider__container');
+        this.#sliderParent = this.#parentEle.querySelector(
+          '.slider__collaction--container'
+        );
+        this.#resultsEle = Array.from(
+          this.#sliderParent.querySelectorAll('.slider__element')
+        );
+        this.#btnleft = this.#parentEle.querySelector('.left');
+        this.#btnRight = this.#parentEle.querySelector('.right');
+
+        btn.classList.contains('right')
+          ? this.#slideRight(btn)
+          : this.#slideLeft(btn);
+      }.bind(this)
+    );
   }
 
-  #markup(obj) {
+  #slideRight(btnRight) {
+    let perSlide = 6;
+    const totalEle = this.#resultsEle.length;
+    const lastSlide = Math.ceil(totalEle / perSlide);
+    let curslide = Number(btnRight.dataset.curslide);
+    const rest = totalEle % perSlide;
+    let remaning = 0;
+
+    this.#btnleft.classList.remove('btn__hidden');
+
+    if (curslide === lastSlide) return;
+
+    if (curslide === lastSlide - 1 && rest !== 0) remaning = perSlide - rest;
+
+    this.#resultsEle.forEach(ele => {
+      const eleWidth = ele.offsetWidth;
+      const eleGap = parseFloat(getComputedStyle(this.#sliderParent).gap);
+
+      ele.style.transform = `translateX(${
+        (eleWidth + eleGap) * (perSlide * curslide - remaning) * -1
+      }px)`;
+    });
+
+    btnRight.dataset.curslide = curslide + 1;
+    this.#btnleft.dataset.curslide = curslide + 1;
+    if (curslide === lastSlide - 1) btnRight.classList.add('btn__hidden');
+  }
+
+  #slideLeft(btnLeft) {
+    let perSlide = 6;
+    let curslide = Number(btnLeft.dataset.curslide);
+
+    this.#btnRight.classList.remove('btn__hidden');
+
+    if (curslide === 1) return;
+
+    this.#resultsEle.forEach(ele => {
+      const eleWidth = ele.offsetWidth;
+      const eleGap = parseFloat(getComputedStyle(this.#sliderParent).gap);
+
+      ele.style.transform = `translateX(${
+        (eleWidth + eleGap) * 6 -
+        (eleWidth + eleGap) * (perSlide * (curslide - 1))
+      }px)`;
+    });
+
+    btnLeft.dataset.curslide = curslide - 1;
+    this.#btnRight.dataset.curslide = curslide - 1;
+    if (curslide === 2) btnLeft.classList.add('btn__hidden');
+  }
+
+  #generateMarkup() {
+    return this.#data.map((obj, i) => this.#markup(obj, i)).join('');
+  }
+
+  #markup(obj, i) {
     return `
     <div class="collaction__element slider__element" data-id=${
       obj.id
     } data-type=${
-      obj.media_type
-    } style="background-image: linear-gradient(to bottom, #1a1d293d, #111526ad), url('https://image.tmdb.org/t/p/original${
+      this.#type
+    } data-position = ${i}  style="background-image: linear-gradient(to bottom, #1a1d293d, #111526ad), url('https://image.tmdb.org/t/p/original${
       obj.poster_path || obj.backdrop_path
     }')">
       <div class="collaction__top">
@@ -86,10 +172,10 @@ class MainView {
         </div>
       </div>
       <div class="collaction__bottom">
-        <h4 class="collaction__head">${obj.original_title || obj.name}</h4>
+        <h4 class="collaction__head">${obj.title || obj.name}</h4>
         <p class="collaction__year">${
           obj.release_date?.split('-')[0] ||
-          obj.air_date?.split('-')[0] ||
+          obj.first_air_date?.split('-')[0] ||
           'N/A'
         }</p>
         ${
