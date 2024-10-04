@@ -4,13 +4,15 @@ import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 export class Results {
   _data;
+  _searchInput;
+  _resultsPanel;
 
   renderResults(data) {
     this._data = data;
     this._sortDataByPopularity();
     const markup = this._generateMarkup();
     this._clear();
-    this._parentEle.insertAdjacentHTML('afterbegin', markup);
+    this._resultsPanel.insertAdjacentHTML('afterbegin', markup);
   }
 
   renderSpinner() {
@@ -34,15 +36,15 @@ export class Results {
   }
 
   _clear() {
-    this._parentEle.innerHTML = '';
+    this._resultsPanel.innerHTML = '';
   }
 
   addHandlerSearching(handler) {
-    this._input.addEventListener(
+    this._searchInput.addEventListener(
       'input',
       function () {
         this._resultsPanel.classList.remove('hidden');
-        const { value } = this._input;
+        const { value } = this._searchInput;
         if (value === '') {
           this._clear();
           this._resultsPanel.classList.add('hidden');

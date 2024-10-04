@@ -190,6 +190,30 @@ body {
   visibility: hidden;
 }
 
+.nav__links--container {
+  display: flex;
+  align-items: center;
+  gap: 4.8rem;
+}
+
+.home__link:link,
+.home__link:visited {
+  display: inline-block;
+  color: #eaebf0;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 1.6rem 3.2rem;
+  border-radius: 999px;
+  background-color: #6e7097;
+  transition: all 0.3s;
+}
+
+.home__link:hover,
+.home__link:active {
+  background-color: #45477a;
+}
+
 .popular__collaction--section {
   margin-bottom: 30vh;
   padding: 2.4rem;
@@ -611,7 +635,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-  z-index: 1;
+  z-index: 3;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease-in-out;
@@ -626,7 +650,7 @@ body {
   top: 50%;
   left: 50%;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
-  z-index: 2;
+  z-index: 4;
   background-color: #45477a;
   opacity: 0;
   visibility: hidden;
@@ -669,7 +693,7 @@ body {
   outline: none;
   background: none;
   cursor: pointer;
-  z-index: 3;
+  z-index: 5;
 }
 
 .close__icon {
@@ -720,7 +744,7 @@ nav .bookmark__icon {
   left: 0;
   transform: translate(0, 0);
   height: 85vh;
-  z-index: 1;
+  z-index: 2;
 }
 
 .series__container {
@@ -826,7 +850,7 @@ nav .bookmark__icon {
 /****************************************************************/
 
 .bookmarks {
-  z-index: 10;
+  z-index: 2;
   visibility: hidden;
   opacity: 0;
   background-color: #30336b;
@@ -888,15 +912,36 @@ nav .bookmark__icon {
   transform: scale(0.99);
 }
 
-@media (max-width: 2000px) and (min-width: 1600px) {
+@media (max-width: 4000px) and (min-width: 2000px) {
   html {
-    font-size: 76%;
+    font-size: 90%;
+  }
+  /* .slider__collaction--container {
+    width: 145rem;
+  } */
+  collaction__element.slider__element {
+    width: 28rem;
+    height: 36rem;
   }
 }
 
-@media (max-width: 4000px) and (min-width: 2000px) {
+@media (max-width: 2000px) and (min-width: 1800px) {
   html {
-    font-size: 85%;
+    font-size: 87%;
+  }
+  .slider__collaction--container {
+    width: 145rem;
+  }
+
+  .collaction__element.slider__element {
+    width: 22rem;
+    height: 30rem;
+  }
+}
+
+@media (max-width: 2000px) and (min-width: 1600px) {
+  html {
+    font-size: 76%;
   }
 }
 
@@ -908,7 +953,7 @@ nav .bookmark__icon {
 
 @media (max-width: 1300px) and (min-width: 1200px) {
   html {
-    font-size: 60%;
+    font-size: 59%;
   }
 }
 
@@ -916,11 +961,33 @@ nav .bookmark__icon {
   html {
     font-size: 57%;
   }
+  .collaction__element.slider__element {
+    width: 21rem;
+  }
+  .slider__collaction--container {
+    gap: 3.4rem;
+  }
 }
 
 @media (max-width: 1100px) and (min-width: 1000px) {
   html {
     font-size: 52.5%;
+  }
+
+  .slider__collaction--container {
+    width: auto;
+  }
+
+  .slider__container {
+    width: 80%;
+  }
+
+  .collaction__element.slider__element {
+    width: 23rem;
+  }
+
+  .slider__collaction--container {
+    gap: 3.4rem;
   }
 }
 
@@ -962,11 +1029,41 @@ nav .bookmark__icon {
   html {
     font-size: 42%;
   }
+  .slider__collaction--container {
+    width: auto;
+  }
+  .slider__container {
+    width: 100%;
+  }
+
+  .collaction__element.slider__element {
+    width: 11rem;
+    height: 14rem;
+  }
+
+  .slider__collaction--container {
+    gap: 1rem;
+  }
+
+  .popular__collaction--section {
+    margin-bottom: 15vh;
+  }
+
+  .collaction__head {
+    font-size: 1.6rem !important;
+  }
+
+  .collaction__year {
+    font-size: 1.4rem !important;
+  }
 }
 
 @media (max-width: 450px) {
   html {
-    font-size: 35%;
+    font-size: 37%;
+  }
+  #search__input {
+    width: 20rem !important;
   }
 }
 

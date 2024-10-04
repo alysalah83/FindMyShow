@@ -22,7 +22,7 @@ class MainView {
   #searchInput = document.getElementById('search__input');
 
   constructor() {
-    this.#addHandlerOpenSearch();
+    this.addHandlerOpenSearch();
     this.#addHandlerSlide();
   }
 
@@ -40,7 +40,7 @@ class MainView {
     );
   }
 
-  #addHandlerOpenSearch() {
+  addHandlerOpenSearch() {
     this.#body.addEventListener(
       'click',
       function (e) {
@@ -95,6 +95,7 @@ class MainView {
     let curslide = Number(btnRight.dataset.curslide);
     const rest = totalEle % perSlide;
     let remaning = 0;
+    console.log(window.innerWidth);
 
     this.#btnleft.classList.remove('btn__hidden');
 
