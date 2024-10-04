@@ -1067,7 +1067,7 @@ nav .bookmark__icon {
   html {
     font-size: 37%;
   }
-  #search__input {
+  .showInput {
     width: 20rem !important;
   }
 }
