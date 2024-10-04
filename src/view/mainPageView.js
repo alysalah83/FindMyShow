@@ -69,38 +69,43 @@ class MainView {
     let touchStartX = 0;
     let touchEndX = 0;
     let currentTranslate = 0;
-    let sliderParent = null; // تعريف متغير السلايدر هنا ليتم تعيينه عند حدوث اللمس
-    let resultsEle = null; // تعريف العناصر بداخل السلايدر هنا
+    let sliderParent = null;
+    let resultsEle = null;
+    const perSlide = 3; // عدد العناصر التي يتم تحريكها في كل مرة
 
     // Event listener for touchstart
     this.#body.addEventListener('touchstart', e => {
-      sliderParent = e.target.closest('.slider__collaction--container'); // تحديد السلايدر الذي تفاعل معه المستخدم
-      if (!sliderParent) return; // إذا لم يكن العنصر داخل سلايدر، لا يتم فعل شيء
+      sliderParent = e.target.closest('.slider__collaction--container');
+      if (!sliderParent) return;
 
       resultsEle = Array.from(
         sliderParent.querySelectorAll('.slider__element')
-      ); // الحصول على العناصر داخل السلايدر الحالي
+      );
 
-      touchStartX = e.touches[0].clientX; // تسجيل موقع اللمس الأولي
+      touchStartX = e.touches[0].clientX;
     });
 
     // Event listener for touchmove
     this.#body.addEventListener('touchmove', e => {
-      if (!sliderParent || !resultsEle) return; // التأكد من أن السلايدر معرف
+      if (!sliderParent || !resultsEle) return;
 
-      touchEndX = e.touches[0].clientX; // تسجيل موقع اللمس الحالي
-      const touchDeltaX = touchEndX - touchStartX; // حساب الفرق بين الموقعين
+      touchEndX = e.touches[0].clientX;
+      const touchDeltaX = touchEndX - touchStartX;
 
-      // تحديث translateX بناءً على حركة اللمس
+      // Update translateX based on touch movement
       resultsEle.forEach(ele => {
-        ele.style.transition = 'none'; // إلغاء الانتقال أثناء السحب
+        ele.style.transition = 'none';
         ele.style.transform = `translateX(${currentTranslate + touchDeltaX}px)`;
       });
     });
 
     // Event listener for touchend
     this.#body.addEventListener('touchend', e => {
-      if (!sliderParent || !resultsEle) return; // التأكد من أن السلايدر معرف
+      if (!sliderParent || !resultsEle) return;
+
+      const elementWidth = resultsEle[0].offsetWidth; // عرض العنصر الواحد
+      const elementGap = parseFloat(getComputedStyle(sliderParent).gap); // المسافة بين العناصر
+      const moveDistance = (elementWidth + elementGap) * perSlide; // المسافة التي يتم تحريكها (عرض 3 عناصر)
 
       const totalElementsWidth = resultsEle.reduce(
         (total, ele) =>
@@ -110,14 +115,14 @@ class MainView {
         0
       );
 
-      const touchDeltaX = touchEndX - touchStartX; // حساب اتجاه السحب
+      const touchDeltaX = touchEndX - touchStartX;
 
       if (touchDeltaX < -50) {
-        // سحب لليسار (تحريك لليمين)
-        currentTranslate -= sliderParent.offsetWidth;
+        // سحب لليسار (تحريك لليمين) - تحريك 3 عناصر
+        currentTranslate -= moveDistance;
       } else if (touchDeltaX > 50) {
-        // سحب لليمين (تحريك لليسار)
-        currentTranslate += sliderParent.offsetWidth;
+        // سحب لليمين (تحريك لليسار) - تحريك 3 عناصر
+        currentTranslate += moveDistance;
       }
 
       // ضبط الحدود لمنع تجاوز العناصر لنطاق السلايدر
@@ -136,12 +141,10 @@ class MainView {
         ele.style.transform = `translateX(${currentTranslate}px)`;
       });
 
-      // إعادة تعيين المتغيرات بعد انتهاء السحب
+      // Reset after the swipe ends
       sliderParent = null;
       resultsEle = null;
     });
-
-    // Add touch event listeners for mobile
   }
 
   #addHandlerSlide() {
