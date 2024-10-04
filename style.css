@@ -1065,10 +1065,20 @@ nav .bookmark__icon {
 
 @media (max-width: 450px) {
   html {
-    font-size: 37%;
+    font-size: 39%;
   }
   .showInput {
     width: 20rem !important;
+  }
+  .nav__links--container {
+    gap: 2.4rem;
+  }
+  .collaction__element.slider__element {
+    width: 20rem;
+    height: 28rem;
+  }
+  .popular__collaction--section {
+    align-items: flex-start;
   }
 }
 
