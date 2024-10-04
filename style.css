@@ -1029,7 +1029,15 @@ nav .bookmark__icon {
   html {
     font-size: 42%;
   }
-  .slider__collaction--container {
+  .popular__collaction--section {
+    margin-bottom: 15vh;
+  }
+
+  .heading__1 {
+    margin-top: 10vh;
+  }
+
+  /* .slider__collaction--container {
     width: auto;
   }
   .slider__container {
@@ -1045,9 +1053,6 @@ nav .bookmark__icon {
     gap: 1rem;
   }
 
-  .popular__collaction--section {
-    margin-bottom: 15vh;
-  }
 
   .collaction__head {
     font-size: 1.6rem !important;
@@ -1055,7 +1060,7 @@ nav .bookmark__icon {
 
   .collaction__year {
     font-size: 1.4rem !important;
-  }
+  } */
 }
 
 @media (max-width: 450px) {

@@ -24,6 +24,7 @@ class MainView {
   constructor() {
     this.addHandlerOpenSearch();
     this.#addHandlerSlide();
+    this.#addHandlerSlideMobile();
   }
 
   render(data, parent, type) {
@@ -64,6 +65,85 @@ class MainView {
     this.#resultsList.innerHTML = '';
   }
 
+  #addHandlerSlideMobile() {
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let currentTranslate = 0;
+    let sliderParent = null; // تعريف متغير السلايدر هنا ليتم تعيينه عند حدوث اللمس
+    let resultsEle = null; // تعريف العناصر بداخل السلايدر هنا
+
+    // Event listener for touchstart
+    this.#body.addEventListener('touchstart', e => {
+      sliderParent = e.target.closest('.slider__collaction--container'); // تحديد السلايدر الذي تفاعل معه المستخدم
+      if (!sliderParent) return; // إذا لم يكن العنصر داخل سلايدر، لا يتم فعل شيء
+
+      resultsEle = Array.from(
+        sliderParent.querySelectorAll('.slider__element')
+      ); // الحصول على العناصر داخل السلايدر الحالي
+
+      touchStartX = e.touches[0].clientX; // تسجيل موقع اللمس الأولي
+    });
+
+    // Event listener for touchmove
+    this.#body.addEventListener('touchmove', e => {
+      if (!sliderParent || !resultsEle) return; // التأكد من أن السلايدر معرف
+
+      touchEndX = e.touches[0].clientX; // تسجيل موقع اللمس الحالي
+      const touchDeltaX = touchEndX - touchStartX; // حساب الفرق بين الموقعين
+
+      // تحديث translateX بناءً على حركة اللمس
+      resultsEle.forEach(ele => {
+        ele.style.transition = 'none'; // إلغاء الانتقال أثناء السحب
+        ele.style.transform = `translateX(${currentTranslate + touchDeltaX}px)`;
+      });
+    });
+
+    // Event listener for touchend
+    this.#body.addEventListener('touchend', e => {
+      if (!sliderParent || !resultsEle) return; // التأكد من أن السلايدر معرف
+
+      const totalElementsWidth = resultsEle.reduce(
+        (total, ele) =>
+          total +
+          ele.offsetWidth +
+          parseFloat(getComputedStyle(sliderParent).gap),
+        0
+      );
+
+      const touchDeltaX = touchEndX - touchStartX; // حساب اتجاه السحب
+
+      if (touchDeltaX < -50) {
+        // سحب لليسار (تحريك لليمين)
+        currentTranslate -= sliderParent.offsetWidth;
+      } else if (touchDeltaX > 50) {
+        // سحب لليمين (تحريك لليسار)
+        currentTranslate += sliderParent.offsetWidth;
+      }
+
+      // ضبط الحدود لمنع تجاوز العناصر لنطاق السلايدر
+      if (currentTranslate > 0) {
+        currentTranslate = 0;
+      } else if (
+        Math.abs(currentTranslate) >
+        totalElementsWidth - sliderParent.offsetWidth
+      ) {
+        currentTranslate = -(totalElementsWidth - sliderParent.offsetWidth);
+      }
+
+      // تطبيق الحركة النهائية مع انتقال سلس
+      resultsEle.forEach(ele => {
+        ele.style.transition = 'transform 0.3s ease';
+        ele.style.transform = `translateX(${currentTranslate}px)`;
+      });
+
+      // إعادة تعيين المتغيرات بعد انتهاء السحب
+      sliderParent = null;
+      resultsEle = null;
+    });
+
+    // Add touch event listeners for mobile
+  }
+
   #addHandlerSlide() {
     this.#body.addEventListener(
       'click',
@@ -86,6 +166,10 @@ class MainView {
           : this.#slideLeft(btn);
       }.bind(this)
     );
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let currentTranslate = 0;
   }
 
   #slideRight(btnRight) {
