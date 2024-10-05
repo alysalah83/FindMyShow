@@ -1182,7 +1182,7 @@ nav .bookmark__icon {
   }
 }
 
-@media (max-width: 370px) {
+@media (max-width: 400px) {
   .movie__info--container {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto;
