@@ -6,6 +6,8 @@ FONT SIZE SYSTEM (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -486,7 +488,7 @@ body {
 .tag {
   display: inline-block;
   padding: 0.6rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   border-radius: 9px;
   font-weight: 600;
 }
@@ -501,7 +503,7 @@ body {
 }
 
 .text {
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: inherit;
   font-weight: 500;
   line-height: 1.5;
@@ -565,16 +567,18 @@ body {
 }
 
 .overview__text {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   line-height: 1.9;
-  margin-bottom: 3.2rem;
+  margin-bottom: 4.8rem;
+  font-weight: 500;
 }
 
 .headline {
-  font-size: 2.2rem;
+  font-size: 2.8rem;
   display: block;
   font-weight: 600;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
+  letter-spacing: 0.5px;
 }
 
 .margin__mid {
