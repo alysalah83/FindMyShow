@@ -237,7 +237,7 @@ class MainView {
       obj.id
     } data-type=${
       this.#type
-    } data-position = ${i}  style="background-image: linear-gradient(to bottom, #1a1d293d, #111526ad), url('https://image.tmdb.org/t/p/original${
+    } data-position = ${i}  style="background-image: linear-gradient(to bottom, #1a1d293d, #111526ad), url('https://image.tmdb.org/t/p/w300${
       obj.poster_path || obj.backdrop_path
     }')">
       <div class="collaction__top">
