@@ -97,7 +97,7 @@ class MovieView {
             <div class="poster__container">
               <div class="img__container">
                 <img
-                    src='https://image.tmdb.org/t/p/original${this.#data.image}'
+                    src='https://image.tmdb.org/t/p/w400${this.#data.image}'
                     alt="${this.#data.title} movie poster"
                 />
               </div>
@@ -368,7 +368,7 @@ class MovieView {
     return `
     <div class="collaction__element" data-id=${obj.id} data-type=${
       obj.media_type
-    } style="background-image: linear-gradient(to bottom, #1a1d293d, #111526ad), url('https://image.tmdb.org/t/p/original${
+    } style="background-image: linear-gradient(to bottom, #1a1d293d, #111526ad), url('https://image.tmdb.org/t/p/w300${
       obj.poster_path || obj.backdrop_path
     }')">
       <div class="collaction__top">
