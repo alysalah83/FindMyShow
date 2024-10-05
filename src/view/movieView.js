@@ -14,12 +14,6 @@ class MovieView {
   #overlay;
   #window;
 
-  constructor() {
-    document.addEventListener('DOMContentLoaded', function () {
-      lazySizes.init();
-    });
-  }
-
   render(data) {
     this.#data = data;
     const markup = this.#generateMarkup();
