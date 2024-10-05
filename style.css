@@ -1240,4 +1240,8 @@ nav .bookmark__icon {
   .search__input__container {
     padding: 0.8rem;
   }
+
+  .img__container {
+    max-width: 33rem;
+  }
 }
