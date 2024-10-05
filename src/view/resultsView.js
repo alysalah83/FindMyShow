@@ -1,6 +1,4 @@
 import { getLanguage } from '../helper';
-import 'lazysizes';
-import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 export class Results {
   _data;
@@ -74,11 +72,11 @@ export class Results {
     return `
   <li class="result" data-id=${res.id} data-type=${res.media_type}>
     <img
-      data-src="https://image.tmdb.org/t/p/original/${
+      src="https://res.cloudinary.com/dothardix/image/fetch/w_140,c_fill,q_auto/https://image.tmdb.org/t/p/original/${
         res.poster_path || res.backdrop_path
       }"
       alt="${res.title || res.name} poster"
-      class="list__image lazyload"
+      class="list__image"
     />
     <div class="list__descrption">
       <h3 class="list__title">${res.title || res.name}</h3>
@@ -97,7 +95,3 @@ export class Results {
   </li>`;
   }
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-  lazySizes.init();
-});
