@@ -71,7 +71,7 @@ class MainView {
     let currentTranslate = 0;
     let sliderParent = null;
     let resultsEle = null;
-    const perSlide = 3; // عدد العناصر التي يتم تحريكها في كل مرة
+    const perSlide = 2; // عدد العناصر التي يتم تحريكها في كل مرة
 
     // Event listener for touchstart
     this.#body.addEventListener('touchstart', e => {
