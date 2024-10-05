@@ -1201,7 +1201,7 @@ nav .bookmark__icon {
   }
 
   .showInput {
-    width: 15rem !important;
+    width: 13rem !important;
   }
 
   .heading__1 {
@@ -1210,5 +1210,16 @@ nav .bookmark__icon {
 
   .popular__collaction--section {
     margin-bottom: 13vh;
+  }
+
+  .nav__links--container {
+    gap: 0;
+    justify-content: space-between;
+  }
+  .movie__details--container {
+    justify-self: center;
+  }
+  .image__frames__container {
+    gap: 3.4rem;
   }
 }
