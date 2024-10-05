@@ -6,6 +6,7 @@ import {
   getLanguage,
 } from '../helper';
 import { DISPLAY_PER_IMAGE } from '../config';
+import image from 'url:../../imdb.jpg';
 
 class MovieView {
   #data;
