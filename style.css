@@ -593,9 +593,9 @@ body {
 }
 
 .image__frames {
-  max-width: 11rem;
-  max-height: 9rem;
-  object-fit: contain;
+  width: 11rem;
+  height: 11rem;
+  object-fit: cover;
   transition: all 0.3s;
 }
 

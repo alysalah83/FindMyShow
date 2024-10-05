@@ -6,9 +6,6 @@ import {
   getLanguage,
 } from '../helper';
 import { DISPLAY_PER_IMAGE } from '../config';
-import image from 'url:../../imdb.jpg';
-import lazySizes from 'lazysizes';
-import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 class MovieView {
   #data;
@@ -316,9 +313,11 @@ class MovieView {
 
   #generateImageFramesMarkup(obj) {
     return `
-    <a href= ${obj.url} class='imgae-frame__link'>
+    <a href=${obj.url} class='imgae-frame__link'>
       <img
-      data-src=${obj.url}
+      src=https://res.cloudinary.com/dothardix/image/fetch/w_150,h_150,c_fill,q_auto/${
+        obj.url
+      }
       alt="${this.#data.title} image frame"
         class="image__frames lazyload"
       />
