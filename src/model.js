@@ -8,6 +8,7 @@ export const state = {
   popularMoviesResults: [],
   TopRatedMovies: [],
   TopRatedSeries: [],
+  recommendations: [],
 };
 
 export const resultsData = async function (query) {
@@ -108,6 +109,13 @@ export const getData = async function (id, type) {
     };
   if (state.bookmarks.some(obj => obj.id === state.tvShow.id))
     state.tvShow.bookmarked = true;
+
+  const recommendations = await getJson(
+    `https://api.themoviedb.org/3/${type}/${id}/recommendations?api_key=e9205f098fab4bfd79d0bf1abbfb3a54`
+  );
+  type === 'movie'
+    ? (state.movie.recommendations = recommendations.results)
+    : (state.tvShow.recommendations = recommendations.results);
 };
 
 export const addBookmark = function (data) {

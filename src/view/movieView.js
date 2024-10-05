@@ -83,6 +83,7 @@ class MovieView {
   }
 
   #generateMarkup() {
+    console.log(this.#data);
     return `
     <main class="main__container scroll" >
         <div class="movie__info--container">
@@ -297,12 +298,22 @@ class MovieView {
                 this.#data.seasons
                   ?.map(obj => this.#collactionMarkup(obj))
                   .join('') ||
-                'No Series for this movie to display.'
+                `No Series for this show to display.`
               }
              </div>
            </div>
         </div>
-    </main>
+        <section class="recommendations__section">
+          <h2 class="heading__2">Similar Shows :</h2>
+            <div class="recommendations__container">${
+              this.#data.recommendations
+                .slice(0, 6)
+                .map(obj => this.#collactionMarkup(obj))
+                .join('') || 'No recommendations for this show to display.'
+            }</div>
+          </div>
+        </section>
+  </main>
 `;
   }
 
@@ -385,10 +396,11 @@ class MovieView {
         </div>
       </div>
       <div class="collaction__bottom">
-        <h4 class="collaction__head">${obj.original_title || obj.name}</h4>
+        <h4 class="collaction__head">${obj.name || obj.original_title}</h4>
         <p class="collaction__year">${
           obj.release_date?.split('-')[0] ||
           obj.air_date?.split('-')[0] ||
+          obj.first_air_date?.split('-')[0] ||
           'N/A'
         }</p>
         ${
