@@ -1118,6 +1118,14 @@ nav .bookmark__icon {
     margin-bottom: 14vh;
   }
 
+  .recommendations__container {
+    justify-content: center;
+  }
+
+  .image__frames__container {
+    justify-content: center;
+  }
+
   /* .slider__collaction--container {
     width: auto;
   }
@@ -1218,8 +1226,18 @@ nav .bookmark__icon {
   }
   .movie__details--container {
     justify-self: center;
+    width: 100%;
   }
   .image__frames__container {
     gap: 3.4rem;
+  }
+  .movie__info--container {
+    gap: 4.4rem;
+  }
+  .home__link {
+    padding: 1.4rem 1.8rem;
+  }
+  .search__input__container {
+    padding: 0.8rem;
   }
 }
