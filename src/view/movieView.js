@@ -285,7 +285,7 @@ class MovieView {
             <div class="image__frames__container">
                 ${
                   this.#data.imageFrames
-                    ?.slice(0, DISPLAY_PER_IMAGE + 1)
+                    ?.slice(0, DISPLAY_PER_IMAGE)
                     ?.map(nodeObj =>
                       this.#generateImageFramesMarkup(nodeObj.node)
                     )
