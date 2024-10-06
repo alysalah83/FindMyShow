@@ -45,6 +45,7 @@ class MainView {
     const perSlide = 2;
 
     this.#body.addEventListener('touchstart', e => {
+      console.log(e);
       sliderParent = e.target.closest('.slider__collaction--container');
       if (!sliderParent) return;
 
