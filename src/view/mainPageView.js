@@ -16,13 +16,8 @@ class MainView {
   #type;
 
   #body = document.body;
-  #resultsList = document.querySelector('.results__list');
-  #panal = document.querySelector('.nav__results');
-  #icon = document.querySelector('.icon__path');
-  #searchInput = document.getElementById('search__input');
 
   constructor() {
-    this.addHandlerOpenSearch();
     this.#addHandlerSlide();
     this.#addHandlerSlideMobile();
   }
@@ -39,30 +34,6 @@ class MainView {
     this.#resultsEle = Array.from(
       this.#sliderParent.querySelectorAll('.slider__element')
     );
-  }
-
-  addHandlerOpenSearch() {
-    this.#body.addEventListener(
-      'click',
-      function (e) {
-        if (!e.target.closest('.search__btn')) return;
-        e.preventDefault();
-        this.#searchInput.classList.toggle('showInput');
-        this.#icon.setAttribute('d', 'M6 18 18 6M6 6l12 12');
-        this.#searchInput.value = '';
-        if (!this.#searchInput.classList.contains('showInput'))
-          this.#icon.setAttribute(
-            'd',
-            'm21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z'
-          );
-        this.#closePanel();
-      }.bind(this)
-    );
-  }
-
-  #closePanel() {
-    this.#panal.classList.add('hidden');
-    this.#resultsList.innerHTML = '';
   }
 
   #addHandlerSlideMobile() {
@@ -182,7 +153,6 @@ class MainView {
     let curslide = Number(btnRight.dataset.curslide);
     const rest = totalEle % perSlide;
     let remaning = 0;
-    console.log(window.innerWidth);
 
     this.#btnleft.classList.remove('btn__hidden');
 

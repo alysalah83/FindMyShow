@@ -2,17 +2,21 @@ import { Results } from './resultsView';
 
 class NavView extends Results {
   _parentEle;
-  _body;
+  _body = document.body;
   _input;
   _resultsPanel;
   _searchInput;
   _btnHome;
 
+  constructor() {
+    super();
+    this.addHandlerOpenSearch();
+  }
+
   render() {
     const markup = this._generateNavMarkup();
     document.body.insertAdjacentHTML('afterbegin', markup);
     this._setFields();
-    this.addHandlerOpenSearch();
     this._addHandlerGoHome();
   }
 
@@ -37,6 +41,7 @@ class NavView extends Results {
       function (e) {
         if (!e.target.closest('.search__btn')) return;
         e.preventDefault();
+        this._setFields();
         this._searchInput.classList.toggle('showInput');
         this._icon.setAttribute('d', 'M6 18 18 6M6 6l12 12');
         this._searchInput.value = '';
@@ -51,6 +56,7 @@ class NavView extends Results {
   }
 
   _closePanel() {
+    this._setFields();
     this._resultsPanel.classList.add('hidden');
     this._resultsList.innerHTML = '';
   }
@@ -82,7 +88,7 @@ class NavView extends Results {
               type="text"
               placeholder="Search"
               id="search__input"
-              class=""
+              class="input"
             />
           </div>
           <div class="results hidden nav__results">

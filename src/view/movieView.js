@@ -83,7 +83,6 @@ class MovieView {
   }
 
   #generateMarkup() {
-    console.log(this.#data);
     return `
     <main class="main__container scroll" >
         <div class="movie__info--container">
