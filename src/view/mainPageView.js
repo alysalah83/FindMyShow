@@ -42,9 +42,8 @@ class MainView {
     let currentTranslate = 0;
     let sliderParent = null;
     let resultsEle = null;
-    const perSlide = 2; // عدد العناصر التي يتم تحريكها في كل مرة
+    const perSlide = 2;
 
-    // Event listener for touchstart
     this.#body.addEventListener('touchstart', e => {
       sliderParent = e.target.closest('.slider__collaction--container');
       if (!sliderParent) return;
@@ -56,27 +55,24 @@ class MainView {
       touchStartX = e.touches[0].clientX;
     });
 
-    // Event listener for touchmove
     this.#body.addEventListener('touchmove', e => {
       if (!sliderParent || !resultsEle) return;
 
       touchEndX = e.touches[0].clientX;
       const touchDeltaX = touchEndX - touchStartX;
 
-      // Update translateX based on touch movement
       resultsEle.forEach(ele => {
         ele.style.transition = 'none';
         ele.style.transform = `translateX(${currentTranslate + touchDeltaX}px)`;
       });
     });
 
-    // Event listener for touchend
     this.#body.addEventListener('touchend', e => {
       if (!sliderParent || !resultsEle) return;
 
-      const elementWidth = resultsEle[0].offsetWidth; // عرض العنصر الواحد
-      const elementGap = parseFloat(getComputedStyle(sliderParent).gap); // المسافة بين العناصر
-      const moveDistance = (elementWidth + elementGap) * perSlide; // المسافة التي يتم تحريكها (عرض 3 عناصر)
+      const elementWidth = resultsEle[0].offsetWidth;
+      const elementGap = parseFloat(getComputedStyle(sliderParent).gap);
+      const moveDistance = (elementWidth + elementGap) * perSlide;
 
       const totalElementsWidth = resultsEle.reduce(
         (total, ele) =>
@@ -89,14 +85,11 @@ class MainView {
       const touchDeltaX = touchEndX - touchStartX;
 
       if (touchDeltaX < -50) {
-        // سحب لليسار (تحريك لليمين) - تحريك 3 عناصر
         currentTranslate -= moveDistance;
       } else if (touchDeltaX > 50) {
-        // سحب لليمين (تحريك لليسار) - تحريك 3 عناصر
         currentTranslate += moveDistance;
       }
 
-      // ضبط الحدود لمنع تجاوز العناصر لنطاق السلايدر
       if (currentTranslate > 0) {
         currentTranslate = 0;
       } else if (
@@ -106,13 +99,11 @@ class MainView {
         currentTranslate = -(totalElementsWidth - sliderParent.offsetWidth);
       }
 
-      // تطبيق الحركة النهائية مع انتقال سلس
       resultsEle.forEach(ele => {
         ele.style.transition = 'transform 0.3s ease';
         ele.style.transform = `translateX(${currentTranslate}px)`;
       });
 
-      // Reset after the swipe ends
       sliderParent = null;
       resultsEle = null;
     });
