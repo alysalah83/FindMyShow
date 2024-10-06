@@ -91,6 +91,7 @@ const init = function () {
   bookmarkView.addHandlerBookmark(controllBookmarks);
   model.loadBookmarks();
   controllLoadPopular();
+  bookmarkView.render(model.state.bookmarks);
 };
 
 init();
