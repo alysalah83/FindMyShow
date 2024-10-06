@@ -1180,9 +1180,15 @@ nav .bookmark__icon {
   .heading__1 {
     letter-spacing: 0.3px;
   }
+  .movie__info--container {
+    column-gap: 2.4rem;
+  }
+  .movie__details--container {
+    width: 20rem;
+  }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 370px) {
   .movie__info--container {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto;
@@ -1243,5 +1249,13 @@ nav .bookmark__icon {
 
   .img__container {
     max-width: 33rem;
+  }
+  .movie__details--container {
+    padding: 3.2rem;
+    min-width: 100%;
+    max-width: 100%;
+  }
+  .lists {
+    gap: 4.4rem;
   }
 }
