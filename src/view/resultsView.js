@@ -4,13 +4,14 @@ export class Results {
   _data;
   _searchInput;
   _resultsPanel;
+  _resultsList;
 
   renderResults(data) {
     this._data = data;
     this._sortDataByPopularity();
     const markup = this._generateMarkup();
     this._clear();
-    this._resultsPanel.insertAdjacentHTML('afterbegin', markup);
+    this._resultsList.insertAdjacentHTML('afterbegin', markup);
   }
 
   renderSpinner() {
@@ -34,7 +35,8 @@ export class Results {
   }
 
   _clear() {
-    this._resultsPanel.innerHTML = '';
+    this._resultsList = document.querySelector('.results__list');
+    this._resultsList.innerHTML = '';
   }
 
   addHandlerSearching(handler) {

@@ -23,7 +23,7 @@ class NavView extends Results {
   _setFields() {
     this._body = document.body;
     this._resultsList = document.querySelector('.results__list');
-    this._resultsPanel = document.querySelector('.nav__results');
+    this._resultsPanel = document.querySelector('.results');
     this._icon = document.querySelector('.icon__path');
     this._searchInput = document.getElementById('search__input');
     this._btnHome = document.querySelector('.home__link');
