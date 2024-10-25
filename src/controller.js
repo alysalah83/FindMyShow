@@ -66,11 +66,18 @@ const controllLoadPopular = async function () {
   //geting popular results
   await model.loadPopular();
 
-  //render popular results
+  //render movies popular results
   mainPageView.render(
     model.state.popularMoviesResults,
     'popular__container',
     'movie'
+  );
+
+  //render series popular results
+  mainPageView.render(
+    model.state.popularSeriesResults,
+    'popular-series__container',
+    'tv'
   );
 
   // render top rated movies

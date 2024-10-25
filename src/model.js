@@ -6,6 +6,7 @@ export const state = {
   results: [],
   bookmarks: [],
   popularMoviesResults: [],
+  popularSeriesResults: [],
   TopRatedMovies: [],
   TopRatedSeries: [],
   recommendations: [],
@@ -151,6 +152,8 @@ export const loadPopular = async function () {
   const [
     popularMovies1,
     popularMovies2,
+    popularSeries1,
+    popularSeries2,
     TopRatedMovies1,
     TopRatedMovies2,
     TopRatedSeries1,
@@ -161,6 +164,12 @@ export const loadPopular = async function () {
     ),
     getJson(
       `https://api.themoviedb.org/3/movie/popular?language=en-US&page=2&api_key=e9205f098fab4bfd79d0bf1abbfb3a54`
+    ),
+    getJson(
+      `https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&api_key=e9205f098fab4bfd79d0bf1abbfb3a54`
+    ),
+    getJson(
+      `https://api.themoviedb.org/3/tv/popular?language=en-US&page=2&api_key=e9205f098fab4bfd79d0bf1abbfb3a54`
     ),
     getJson(
       `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=e9205f098fab4bfd79d0bf1abbfb3a54`
@@ -179,6 +188,11 @@ export const loadPopular = async function () {
   state.popularMoviesResults = [
     ...popularMovies1.results,
     ...popularMovies2.results,
+  ];
+
+  state.popularSeriesResults = [
+    ...popularSeries1.results,
+    ...popularSeries2.results,
   ];
 
   state.TopRatedMovies = [
